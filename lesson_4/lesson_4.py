@@ -64,11 +64,80 @@ print('Результат = ',my_summa * 1000)
 from itertools import cycle, count
 
 
+def lll(start):
+    a = []
+    for i in count(start):
+        a.append(i)
+        if i == start * 100:
+            return a
 
 
+def ddd(spis):
+    new_spis = []
+    sch = 0
+    for elem in cycle(spis):
+        new_spis.append(elem)
+        new_spis.append(elem)
+        sch +=1
+        if sch == 10 * len(spis):
+            return new_spis
+
+bbbb = lll(15)
+print(bbbb)
+
+ccc = ddd(bbbb)
+print(ccc)
 
 
 #7. Реализовать генератор с помощью функции с ключевым словом yield, создающим очередное значение. При вызове функции
 # должен создаваться объект-генератор. Функция вызывается следующим образом: for el in fact(n). Она отвечает за
 # получение факториала числа. В цикле нужно выводить только первые n чисел, начиная с 1! и до n!.
 # Подсказка: факториал числа n — произведение чисел от 1 до n. Например, факториал четырёх 4! = 1 * 2 * 3 * 4 = 24.
+
+
+#import math
+def my_fact(digit):
+    res = 1
+    result = ( i for i in range(1, digit))
+    for scht in result:
+       res = res * scht
+    res = res * digit # добавляю последнее из диаппазона
+    return res
+    #result.append(digit)
+    #itog =
+    #print(result)
+    #return result
+
+a = 3
+print(my_fact(a))
+
+a = 5
+print(my_fact(a))
+#print(math.factorial(a))
+
+### вариант  c yield
+
+#import math
+def my_fact(digit):
+    res = 1
+    result = ( i for i in range(1, digit))
+    for scht in result:
+       res = res * scht
+    res = res * digit # добавляю последнее из диаппазона
+    yield res
+    #result.append(digit)
+    #itog =
+    #print(result)
+    #return result
+
+res1 = my_fact(5)
+
+for mfact in res1:
+    print(mfact)
+
+#a = 3
+#print(my_fact(a))
+
+#a = 5
+#print(my_fact(a))
+#print(math.factorial(a))
